@@ -1,0 +1,449 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/caba.css' %}">
+    <!-- CDN for jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+
+
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+   
+    <title>Cabana Wireless</title>
+  </head>
+  <body>
+   
+
+
+    <!--- navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark data-bs-theme="dark"">
+      <div class="container-fluid nav-item" >
+        <a class="navbar-brand brand tests " href="{% url 'home' %}">Cabana Wireless</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#Trending">Trending News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="{% url 'add_record' %}">Register</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav> 
+    <!-- navbar End -->
+    
+    <!-- alert Messages -->
+    <div class="container">
+      <br />
+      {% if messages%} {% for message in messages%}
+
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      {% endfor %} {%endif%} {% block content %} {% endblock %}
+    </div>
+
+
+        <!-- alert Messages End-->
+
+
+    <!-- info section start -->
+    <div class="container contain">
+      <div class="row">
+        <div class="col-md-6 serve">
+          <h1 class="h1">Cabana Wireless</h1>
+          <div class="">
+            <h2>Services Rendered:</h2>
+            <ul class="services-list">
+              <li>
+                <i class="fa-regular fa-circle-check"></i> NYSC Registration
+                (NYSC Accredited Center)
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> WAEC/NECO
+                Registration
+              </li>
+              <li><i class="fa-regular fa-circle-check"></i> Café Services</li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Graphic Designs
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Repairs/Formatting of
+                Laptops and Desktops
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Company Business
+                Cards/ID Cards
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Printing of
+                Banner/Flyers
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Design of Company’s
+                Letterhead
+              </li>
+              <li><i class="fa-regular fa-circle-check"></i> Bulk printing</li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Online
+                Registration/Universities/Job Application
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Creation of Standard
+                Resume/Linkedin Profile Creation
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check"></i> Music Promotions
+                e.t.c
+              </li>
+             
+            </ul>
+          </div>
+          <img src="{% static 'website/images/jamb.jpeg' %}" alt="" height="150px" width="100%" />
+        </div>
+        <div class="col-md-6">
+          <div
+            id="carouselExampleAutoplaying"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'website/images/1waec.jpeg' %}" class="d-block w-100" alt="..." />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="{% static 'website/images/2 cabana services.jpeg' %}"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="{% static 'website/images/3 school payment.jpeg' %}"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="{% static 'website/images/4 Nysc registration.jpeg' %}"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="{% static 'website/images/CAC.jpeg' %}"
+                  class="d-block w-100"
+                  alt="..."
+                  height="800px"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleAutoplaying"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- info section start end -->
+    <h2 class="trend" id="Trending">Trending News</h2>
+    <div class="container news">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem">
+            <img src="{% static 'website/images/waeclogo.png' %}" class="card-img-top" alt="..."  height="150px"  />
+            <div class="card-body">
+              <h5 class="card-title">WAEC Update</h5>
+              <p class="card-text">
+                For the latest news from Waec, we recommend visiting the official Waec website by clicking the link below.
+
+              </p>
+              <a href="https://www.waecnigeria.org/" class="btn btn-primary" target="_blank">Waec update</a>
+            </div>
+          </div>
+        </div>
+        <!-- 2 news -->
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem">
+            <img src="{% static 'website/images/nysclogo.png' %}" class="card-img-top" alt="..." height="150px" />
+            <div class="card-body">
+              <h5 class="card-title">NYSC Latest</h5>
+              <p class="card-text">
+                For the latest news from Nysc, we recommend visiting the official NYSC website by clicking the link below.
+
+              </p>
+              <a href="https://www.nysc.gov.ng/" class="btn btn-primary" target="_blank">Nysc latest</a>
+            </div>
+          </div>
+        </div>
+        <!-- 3 news -->
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem">
+            <img src="{% static 'website/images/jamblogo.jpg' %}" class="card-img-top" alt="..."  height="150px"   />
+            <div class="card-body">
+              <h5 class="card-title">Jamb News</h5>
+              <p class="card-text">
+                For the latest news from JAMB, we recommend visiting the official JAMB website by clicking the link below.
+              </p>
+              <a href="https://jamb.gov.ng/" class="btn btn-primary" target="_blank">Jamb News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Request -->
+
+    <h2 class="trend" id="contact">Contact Us for any services</h2>
+    <div class="container">
+      <div class="row conta">
+        <div class="col-md-6">
+          <p>
+            <h2>Contact Us</h2>
+            For any services you want us, Cabana Wireless, to do for you, such
+            as checking WAEC, NECO and JAMB result e.t.c as shown below, please
+            send us an email by filling the neccessary field. Send us the pdf file downloaded on 
+            our WhatsApp line down below. Thank You
+          </p>
+
+          <img
+            src="{% static 'website/images/cabana services.jpeg' %}"
+            alt=""
+            width="650px"
+            height="720px"
+          />
+        </div>
+        <div class="col-md-6 ">
+          <form id="myForm" onsubmit="composeEmailAndGeneratePDF(); return false;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+            <br />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" />
+            <br /><br />
+            <label for="examType">Select Exam Type:</label>
+            <select id="examType" name="examType" required>
+              <option value="WAEC">WAEC</option>
+              <option value="NECO">NECO</option>
+              <option value="JAMB">JAMB</option>
+            </select>
+            <br /><br />
+            <label for="regNumber">Registration Number:</label>
+            <input type="text" id="regNumber" name="regNumber" />
+            <br />
+            <label for="examYear">Exam Year:</label>
+            <input type="date" id="examYear" name="examYear" />
+            <br />
+            <label for="scratchCard">Scratch Card/PIN:</label>
+            <input type="text" id="scratchCard" name="scratchCard" />
+            <br />
+            <label for="message">Message:</label>
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <br />
+
+            <button type="submit">Send Email</button>
+          </form>
+
+          <script>
+            function composeEmailAndGeneratePDF() {
+              // Get form data
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const examType = document.getElementById('examType').value;
+              const regNumber = document.getElementById('regNumber').value;
+              const examYear = document.getElementById('examYear').value;
+              const scratchCard = document.getElementById('scratchCard').value;
+              const message = document.getElementById('message').value;
+        
+              // Create a new PDF document
+              const pdf = new jsPDF();
+        
+              // Populate PDF with form data
+              pdf.text(`Name: ${name}`, 10, 10);
+              pdf.text(`Email: ${email}`, 10, 20);
+              pdf.text(`Exam Type: ${examType}`, 10, 30);
+              pdf.text(`Registration Number: ${regNumber}`, 10, 40);
+              pdf.text(`Exam Year: ${examYear}`, 10, 50);
+              pdf.text(`Scratch Card/PIN: ${scratchCard}`, 10, 60);
+              pdf.text(`Message: ${message}`, 10, 70);
+        
+              // Save the PDF
+              pdf.save('form_submission.pdf');
+        
+              // Compose email with form data
+              var recipient = "cabanawireless@gmail.com";
+              var subject =
+                "Name: " +
+                name +
+                "\nEmail: " +
+                email +
+                "\nExam Type: " +
+                examType +
+                " \n Registration Number: " +
+                regNumber +
+                " \n Exam Year: " +
+                examYear +
+                " \n Scratch Card/PIN: " +
+                scratchCard +
+                " \n\nMessage: " +
+                message;
+        
+              var mailtoLink =
+                "mailto:" +
+                recipient +
+                "?subject=" +
+                encodeURIComponent(subject);
+              window.location.href = mailtoLink;
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+<!-- pdf test -->
+<!-- pdf test -->
+
+    <!-- Request end -->
+
+    <!-- WhatsApp infor -->
+
+    <center>
+      <div class="row col-md-6" id="contact">
+        <div class="card text-center">
+          <div class="card-header">Featured</div>
+          <div class="card-body">
+            <h5 class="card-title">For more information</h5>
+            <p class="card-text"></p>
+            <a
+              href="https://wa.me/2347037122769"
+              target="_blank"
+              class="btn btn-success"
+              >Message Us on WhatsApp</a
+            >
+          </div>
+          <div class="card-footer text-body-secondary">2 days ago</div>
+        </div>
+      </div>
+    </center>
+    <!-- WhatsApp infor ends -->
+
+    <!-- footer start -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 contact">
+          <h4>Contact</h4>
+          <p>CALL NOW</p>
+          <p><i class="fa fa-phone"></i> +234 7037122769</p>
+          <p></p>
+        </div>
+        <div class="col-md-4">
+          <h4>Address</h4>
+          <p>GET DIRECTIONS</p>
+          <p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126839.89353844259!2d3.05138820936442!3d6.553632478871371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b902907443deb%3A0x3ec2a473a308f44e!2sCabana%20Wireless%20Cyber%20Cafe%20%26%20Computer%20Printing!5e0!3m2!1sen!2suk!4v1691835114257!5m2!1sen!2suk"
+              width="200"
+              height="200"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </p>
+          <p>Lagos, Nigeria</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Business Hours</h4>
+          <p>Mon: 8:00 AM - 8:00 PM</p>
+          <p>Tue: 8:00 AM - 8:00 PM</p>
+          <p>Wed: 8:00 AM - 8:00 PM</p>
+          <p>Thu: 10:00 AM - 8:00 PM</p>
+          <p>Fri: 8:00 AM - 8:00 PM</p>
+          <p>Sat: 10:30 AM - 8:00 PM</p>
+
+          <p>Sun: <a href="{% url 'admi' %}" class="ok">Closed</a></p>
+        </div>
+      </div>
+    </footer>
+    <!-- footer Ends -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

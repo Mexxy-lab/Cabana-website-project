@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Oswald:wght@500&family=Raleway:wght@500&family=Roboto:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Lora&family=Oswald:wght@500&family=Raleway:wght@500&family=Roboto:wght@300;400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.ok {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item a {
+  color: white;
+}
+.brand {
+  font-family: "Lobster", Georgia, "Times New Roman", Times, serif;
+  font-size: 30px;
+  color: white;
+}
+.nav-item a:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.contain {
+  border: 5px;
+  border-style: groove;
+}
+
+#navbarNav {
+  margin-left: 400px;
+}
+
+.nav-link {
+  margin-left: 80px;
+  color: #f9f9f9;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding-top: 20px;
+}
+.contact {
+  padding-left: 100px;
+}
+
+/* Style the services list */
+.services-list {
+  list-style-type: none;
+  padding-left: 20px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Adjust spacing between list items */
+.services-list li {
+  margin-bottom: 8px;
+}
+/* Style the headings */
+.h1 {
+  text-align: center;
+}
+
+h1 {
+  text-decoration: underline;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-family: "Lora", "Courier New", Courier, monospace;
+  font-size: 1.8rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+li {
+  color: navy;
+}
+
+/* Add media query for responsiveness */
+/* @media (max-width: 1000px) {
+  .container {
+    margin-left: 20px;
+  }
+  #navbarNav {
+    margin-left: 0;
+  }
+} */
+
+/* Apply styles to the form container */
+.container {
+  margin-top: 30px;
+}
+
+/* Apply styles to the form */
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply styles to form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Apply styles to form inputs and textarea */
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Apply styles to the "Check Result" button */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.conta {
+  border-style: dashed;
+}
+
+.trend {
+  margin-top: 55px;
+  margin-left: 150px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#contact {
+  margin-top: 55px;
+  margin-bottom: 55px;
+}
