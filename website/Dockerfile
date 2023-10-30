@@ -21,3 +21,5 @@ RUN pip3 install -r requirements.txt
 
 # Make port 80 available to the world outside this container
 EXPOSE 3000
+
+CMD python3 app.py
