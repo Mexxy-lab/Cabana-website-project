@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rdx$1klb%hds+nf4v1f^^rtrd57uf+#tu=j@(=^+@v60@+zpcu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost:3000']
+ALLOWED_HOSTS = ['localhost:3000', 'localhost']
 
 
 # Application definition
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'dcrm.wsgi.application'
 DATABASES = {
     'default': {
     # since we are using mysql database not sqlite3 we edit this
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mofor',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'mysql_container',
         'USER': 'root',
-        'PASSWORD' : 'root',
-        'HOST': 'localhost',
+        'PASSWORD' : 'mekulus',
+        'HOST': '172.17.0.2',
         'PORT': '3306',
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
