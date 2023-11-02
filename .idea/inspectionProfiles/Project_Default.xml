@@ -8,6 +8,7 @@
           <option value="website.manage.app" />
           <option value="website.manage.ImportError" />
           <option value="manage.ImportError" />
+          <option value="dcrm.settings.pathlib" />
         </list>
       </option>
     </inspection_tool>
