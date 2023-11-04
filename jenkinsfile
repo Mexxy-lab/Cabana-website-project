@@ -40,8 +40,8 @@ pipeline {
             //steps {
                 //Used to run for Vulnerability scans on your codes also
                 //sh 'trivy image $APP_NAME:$BUILD_NUMBER'
-            }
-       }
+            //}
+       //}
         stage('Push image') {
             steps{
                 sh 'docker push $APP_NAME:$BUILD_NUMBER'
