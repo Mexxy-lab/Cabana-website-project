@@ -11,21 +11,22 @@ pipeline {
     stages {
         stage('SCM Checkout') {
             steps{
-           git branch: 'main', url: 'https://github.com/Mexxy-lab/Cabana-website-project.git'
+            git branch: 'main', url: 'https://github.com/Mexxy-lab/Cabana-website-project.git'
+
             }
         }
-        // run sonarqube test
-        //stage('Run Sonarqube') {
-            //environment {
-                //scannerHome = tool 'ibt-sonarqube';
-            //}
-            //steps {
-              //Used to test the quality of your codes, for code bugs etc
-              //withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
-                //sh "${scannerHome}/bin/sonar-scanner"
-              //}
-            //}
-        //}
+        //run sonarqube test
+        stage('Run Sonarqube') {
+            environment {
+                scannerHome = tool 'ibt-sonarqube';
+            }
+            steps {
+              Used to test the quality of your codes, for code bugs etc
+              withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+            }
+        }
         stage('Build docker image') {
             steps {
                 sh 'docker build -t $APP_NAME:$BUILD_NUMBER .'
@@ -36,12 +37,12 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        //stage('Trivy Scan (Aqua)') {
-            //steps {
+        stage('Trivy Scan (Aqua)') {
+            steps {
                 //Used to run for Vulnerability scans on your codes also
-                //sh 'trivy image $APP_NAME:$BUILD_NUMBER'
-            //}
-       //}
+                sh 'trivy image $APP_NAME:$BUILD_NUMBER'
+            }
+       }
         stage('Push image') {
             steps{
                 sh 'docker push $APP_NAME:$BUILD_NUMBER'
@@ -50,14 +51,13 @@ pipeline {
         stage('Trigger ManifestUpdate') {
              steps{
                 build job: 'argocd-manifest-cabana', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
-
              }
-           }
         }
+    }
     post {
         always {
            //slackSend message: 'Pipeline completed - Build deployed successfully '
            slackSend color: "good", message: "Build Deployed Successfully, Downstream Job Triggered"
-           }
+        }
     }
 }
