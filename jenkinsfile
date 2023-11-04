@@ -16,17 +16,17 @@ pipeline {
             }
         }
         //run sonarqube test
-        //stage('Run Sonarqube') {
-            //environment {
-                //scannerHome = tool 'ibt-sonarqube';
-            //}
-            //steps {
+        stage('Run Sonarqube') {
+            environment {
+                scannerHome = tool 'ibt-sonarqube';
+            }
+            steps {
               //Used to test the quality of your codes, for code bugs etc
-              //withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
-                //sh "${scannerHome}/bin/sonar-scanner"
-              //}
-            //}
-        //}
+              withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
+                sh "${scannerHome}/bin/sonar-scanner"
+              }
+            }
+        }
         stage('Build docker image') {
             steps {
                 sh 'docker build -t $APP_NAME:$BUILD_NUMBER .'
@@ -37,12 +37,12 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        //stage('Trivy Scan (Aqua)') {
-            //steps {
+        stage('Trivy Scan (Aqua)') {
+            steps {
                 //Used to run for Vulnerability scans on your codes also
-                //sh 'trivy image $APP_NAME:$BUILD_NUMBER'
-            //}
-       //}
+                sh 'trivy image $APP_NAME:$BUILD_NUMBER'
+            }
+       }
         stage('Push image') {
             steps{
                 sh 'docker push $APP_NAME:$BUILD_NUMBER'
