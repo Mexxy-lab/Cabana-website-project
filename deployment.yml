@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cabana-deployment
+  namespace: default
+  labels:
+    app: cabana-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cabana-app
+  template:
+    metadata:
+      labels:
+        app: cabana-app
+    spec:
+      containers:
+        - name: cabanacontainer
+          image: pumejlab/cabana:1
+          ports:
+            - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cabanaapp-service
+spec:
+  selector:
+    app: cabana-app
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
+  type: LoadBalancer
