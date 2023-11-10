@@ -16,17 +16,17 @@ pipeline {
             }
         }
         //run sonarqube test
-        stage('Run Sonarqube') {
-            environment {
-                scannerHome = tool 'ibt-sonarqube';
-            }
-            steps {
+        //stage('Run Sonarqube') {
+            //environment {
+                //scannerHome = tool 'ibt-sonarqube';
+            //}
+            //steps {
               //Used to test the quality of your codes, for code bugs etc
-              withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
-                sh "${scannerHome}/bin/sonar-scanner"
-              }
-            }
-        }
+              //withSonarQubeEnv(credentialsId: 'ibt-sonar', installationName: 'IBT sonarqube') {
+                //sh "${scannerHome}/bin/sonar-scanner"
+              //}
+            //}
+        //}
         stage('Build docker image') {
             steps {
                 sh 'docker build -t $APP_NAME:$BUILD_NUMBER .'
