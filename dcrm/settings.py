@@ -129,7 +129,7 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'admi'
+LOGIN_REDIRECT_URL = 'admin'
 
 
 import os
