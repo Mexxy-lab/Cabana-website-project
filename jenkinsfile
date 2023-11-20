@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Trigger ManifestUpdate') {
              steps{
-                build job: 'argocd-manifest-cabana-main', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'argocd-manifest-cabana', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
              }
         }
     }
