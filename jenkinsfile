@@ -51,6 +51,7 @@ pipeline {
         }
         stage('Trigger ManifestUpdate') {
              steps{
+                //Used to trigger build job of argocd manifest
                 build job: 'argocd-manifest-cabana', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
              }
         }
