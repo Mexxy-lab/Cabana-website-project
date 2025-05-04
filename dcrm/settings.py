@@ -83,7 +83,7 @@ DATABASES = {
         'PASSWORD' : 'mekulus',
         'HOST': '172.17.0.2',
         'PORT': '3306',
-        # 'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
