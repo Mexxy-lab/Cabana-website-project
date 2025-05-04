@@ -63,6 +63,30 @@ docker exec -it mysql-container mysql -u root -p | Used to connect to the server
 CREATE DATABASE mysql_container; | Create Database name and update your settings.py file with new name 
 ```
 
+## To run the application locally follow the steps below
+
+- Create your python environment, use the below commands
+
+```bash
+python3 -m venv venv    | Used to create the environment
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
+
+- Install dependencies for the application
+
+```bash
+pip install -r requirements.txt
+```
+
+- Migrate the Tables using the manage.py file
+
 ```bash
 python manage.py migrate | Used to migrate the tables. This command will create the necessary tables in your database
+```
+
+- Run your application using below command
+
+```bash
+python manage.py runserver 0.0.0.0:3000
+python manage.py runserver 3000
 ```
