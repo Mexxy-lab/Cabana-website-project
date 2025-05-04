@@ -90,3 +90,19 @@ python manage.py migrate | Used to migrate the tables. This command will create 
 python manage.py runserver 0.0.0.0:3000
 python manage.py runserver 3000
 ```
+
+## - Now you can run the final build command to start up your container
+
+```bash
+docker build -t mycabanapp22:v1.0.0 . | Used to build docker image name mycabanapp22:v1.0.0
+```
+
+```bash
+docker run -d -p 8339:3000 mycabanapp22:v1.0.0 | Used to start the container assigning port 8339 to it run via 3000 on container
+```
+
+```bash
+docker rename nervous_khorana cabana_container | Used to rename container to cabana_container
+```
+
+- You can now launch the website on localhost:8339 and see it go live
