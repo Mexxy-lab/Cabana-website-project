@@ -105,4 +105,12 @@ docker run -d -p 8339:3000 mycabanapp22:v1.0.0 | Used to start the container ass
 docker rename nervous_khorana cabana_container | Used to rename container to cabana_container
 ```
 
+```bash
+kubectl create secret docker-registry ecr-secrets \
+--docker-server=598189530267.dkr.ecr.ap-south-1.amazonaws.com \
+--docker-username=AWS \
+--docker-password=$(aws ecr get-login-password --region ap-south-1) \
+--docker-email=pumej@yahoo.com -n default
+```
+
 - You can now launch the website on localhost:8339 and see it go live
