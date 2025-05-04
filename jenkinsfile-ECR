@@ -11,7 +11,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('pumej_aws_secret_key')
         ECR_NAME = "pumejcabana"
         registryUrl = "598189530267.dkr.ecr.ap-south-1.amazonaws.com"
-        IMAGE_TAG = "v1.0"
     }
 
     stages {
@@ -20,6 +19,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Mexxy-lab/Cabana-website-project.git'
             }
         }
+        stage('Set Image Tag') {
+            steps {
+                script {
+                    env.IMAGE_TAG = "v.${env.BUILD_NUMBER}"
+                }
+            }
+        }        
 
         stage('Docker Build') {
             steps {
@@ -66,10 +72,11 @@ pipeline {
         stage('Trigger ManifestUpdate') {
             steps {
                 build job: 'argocd-manifest-cabana', parameters: [
-                    string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)
+                    string(name: 'DOCKERTAG', value: "${IMAGE_TAG}")
                 ]
             }
         }
+
     }
 
     post {
