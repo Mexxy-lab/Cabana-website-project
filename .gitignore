@@ -69,3 +69,15 @@ dist/
 *.ipr
 *.iws
 out/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# Local container/data/dev files
+mysql_container
